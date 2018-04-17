@@ -2,7 +2,7 @@
 /*--------------------> ARROW FUNCTIONS <--------------------*/
 ///////////////////////////////////////////////////////////////
 
-let arrowFunctions = function () {
+const arrowFunctions = function () {
 
     //ES5
     var years = [1990, 2008, 1954, 1967, 1989];
@@ -100,7 +100,7 @@ let arrowFunctions = function () {
 /*--------------------> DESTRUCTURING <--------------------*/
 /////////////////////////////////////////////////////////////
 
-const destructing = function () {
+const destructuring = function () {
 
     //ES5
     var John = ['John', 26];
@@ -139,4 +139,45 @@ const destructing = function () {
     console.log(age1, retirement);
 
 };
-destructing();
+destructuring();
+
+
+
+
+//////////////////////////////////////////////////////
+/*--------------------> ARRAYS <--------------------*/
+//////////////////////////////////////////////////////
+
+const arrays = function () {
+
+    const boxes = document.querySelectorAll('.box'); //-> gdy pobieramy element ma on postać NodeList
+
+    //ES5
+    var boxes5 = Array.prototype.slice.call(boxes); //-> przenoszenie elementów do Array 
+    //    boxes5.forEach(function(cur){
+    //        cur.style.backgroundColor = "dodgerBlue";
+    //    });
+
+    //ES6
+    const boxes6 = Array.from(boxes); //-> przenoszenie w ES6
+    boxes6.forEach(cur => cur.style.backgroundColor = "dodgerBlue");
+
+    
+/*-------LOOPS--------*/
+    //ES5
+    //    for(var i = 0; i < boxes5.length; i++) {
+    //        if(boxes5[i].className === "box blue"){
+    //            continue;
+    //        }
+    //        boxes5[i].textContent = "I changed to blue"
+    //    };
+
+    //ES6
+    for (const cur of boxes6) {
+        if (cur.className.includes("blue")) {
+            continue;
+        }
+        cur.textContent = "I changed to blue";
+    }
+};
+arrays();
