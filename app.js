@@ -223,5 +223,20 @@ function spreadOperators() {
     //ES6
     const sum3 = addFourAges(...ages);
     console.log(sum3);
+    
+    // EXAMPLE
+    const family1 = ["Adam", "John", "Anne"];
+    const family2 = ["Tom", "Jane", "Bryan"];
+    
+    const bigFamily = [...family1, "Lily", ...family2];
+    console.log(bigFamily);
+    
+    // EXAMPLE
+    const h = document.querySelector('h1');
+    const boxes = document.querySelectorAll('.box');
+    const all = [h, ...boxes];
+    
+    all.forEach(cur => cur.style.color = "purple");    
+    
 };
 spreadOperators();
