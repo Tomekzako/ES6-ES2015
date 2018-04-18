@@ -223,20 +223,48 @@ function spreadOperators() {
     //ES6
     const sum3 = addFourAges(...ages);
     console.log(sum3);
-    
+
     // EXAMPLE
     const family1 = ["Adam", "John", "Anne"];
     const family2 = ["Tom", "Jane", "Bryan"];
-    
+
     const bigFamily = [...family1, "Lily", ...family2];
     console.log(bigFamily);
-    
+
     // EXAMPLE
     const h = document.querySelector('h1');
     const boxes = document.querySelectorAll('.box');
     const all = [h, ...boxes];
-    
-    all.forEach(cur => cur.style.color = "purple");    
-    
+
+    all.forEach(cur => cur.style.color = "purple");
+
 };
-spreadOperators();
+//spreadOperators();
+
+
+
+
+////////////////////////////////////////////////////////////////
+/*--------------------> SPREAD OPERATORS <--------------------*/
+////////////////////////////////////////////////////////////////
+
+function restParameters() {
+
+    //ES5
+    function fullAge5(limit) {
+        var arr = Array.prototype.slice.call(arguments, 1);
+        arr.forEach(function (cur) {
+            console.log(2018 - cur >= limit);
+        })
+    };
+    fullAge5(21, 1990, 2010, 1967);
+
+    //ES6
+    function fullAge6(limit, ...years) {
+        years.forEach(cur => console.log(2018 - cur >= limit));
+    };
+    fullAge6(18, 1990, 2010, 1967, 2016, 1933);
+};
+restParameters();
+
+/* Największą różnicą między spread operator, a rest parameters jest miejsce w którym ich używamy. Spread jest używany w function call, natomiast rest w deklaracji. */
