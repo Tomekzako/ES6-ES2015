@@ -139,7 +139,7 @@ const destructuring = function () {
     console.log(age1, retirement);
 
 };
-destructuring();
+//destructuring();
 
 
 
@@ -162,8 +162,23 @@ const arrays = function () {
     const boxes6 = Array.from(boxes); //-> przenoszenie w ES6
     boxes6.forEach(cur => cur.style.backgroundColor = "dodgerBlue");
 
-    
-/*-------LOOPS--------*/
+
+    // EXAMPLE
+
+    //ES5
+    var ages = [15, 17, 11, 23, 16, 8];
+    var fullAge = ages.map(function (cur) {
+        return cur >= 18;
+    });
+    console.log(fullAge.indexOf(true));
+    console.log(ages[fullAge.indexOf(true)]);
+
+    //ES6
+    console.log(ages.findIndex(cur => cur >= 18));
+    console.log(ages.find(cur => cur >= 18));
+
+
+    /*-------LOOPS--------*/
     //ES5
     //    for(var i = 0; i < boxes5.length; i++) {
     //        if(boxes5[i].className === "box blue"){
@@ -179,5 +194,34 @@ const arrays = function () {
         }
         cur.textContent = "I changed to blue";
     }
+
+
 };
-arrays();
+//arrays();
+
+
+
+
+////////////////////////////////////////////////////////////////
+/*--------------------> SPREAD OPERATORS <--------------------*/
+////////////////////////////////////////////////////////////////
+
+function spreadOperators() {
+
+    function addFourAges(a, b, c, d) {
+        return a + b + c + d;
+    }
+
+    var sum1 = addFourAges(18, 30, 12, 21);
+    console.log(sum1);
+
+    //ES5
+    var ages = [18, 30, 12, 21];
+    var sum2 = addFourAges.apply(null, ages);
+    console.log(sum2);
+
+    //ES6
+    const sum3 = addFourAges(...ages);
+    console.log(sum3);
+};
+spreadOperators();
