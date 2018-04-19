@@ -265,7 +265,7 @@ function restParameters() {
     };
     fullAge6(18, 1990, 2010, 1967, 2016, 1933);
 };
-restParameters();
+//restParameters();
 
 /* Największą różnicą między spread operator, a rest parameters jest miejsce w którym ich używamy. Spread jest używany w function call, natomiast rest w deklaracji. */
 
@@ -307,4 +307,53 @@ function defaultParameters() {
     console.log(john);
     console.log(tom);
 };
-defaultParameters();
+//defaultParameters();
+
+
+
+
+
+////////////////////////////////////////////////////
+/*--------------------> MAPS <--------------------*/
+////////////////////////////////////////////////////
+
+function maps() {
+
+    const question = new Map();
+
+    /*---SET---*/
+    question.set('question', 'What is the official name of the latest major Javascript version?');
+    question.set(1, 'ES5');
+    question.set(2, 'ES');
+    question.set(3, 'ES2015');
+    question.set(4, 'ES7');
+    question.set('correct', 3);
+    question.set('true', 'Correct answer :)');
+    question.set('false', 'Wrong, please try again!');
+
+    console.log(question);
+
+    /*---GET---*/
+    console.log(question.get('question'));
+    console.log(question.get('3'));
+    console.log(question.get('true'));
+
+    /*---SIZE---*/
+    console.log(question.size);
+
+    /*---DELETE---*/
+    //question.delete(4);
+    question.delete(2);
+    console.log(question);
+
+    /*---HAS---*/
+    if (question.has(4)) {
+        console.log('Answer 4 is here');
+    }
+
+    /*---CLEAR---*/
+    question.clear();
+    console.log(question);
+
+};
+maps();
