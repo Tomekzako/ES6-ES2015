@@ -324,36 +324,47 @@ function maps() {
     /*---SET---*/
     question.set('question', 'What is the official name of the latest major Javascript version?');
     question.set(1, 'ES5');
-    question.set(2, 'ES');
+    question.set(2, 'ES6');
     question.set(3, 'ES2015');
     question.set(4, 'ES7');
     question.set('correct', 3);
-    question.set('true', 'Correct answer :)');
-    question.set('false', 'Wrong, please try again!');
+    question.set(true, 'Correct answer :)');
+    question.set(false, 'Wrong, please try again!');
 
-    console.log(question);
+    //    console.log(question);
 
     /*---GET---*/
     console.log(question.get('question'));
-    console.log(question.get('3'));
-    console.log(question.get('true'));
+    //    console.log(question.get('3'));
+    //    console.log(question.get('true'));
 
     /*---SIZE---*/
-    console.log(question.size);
+    //    console.log(question.size);
 
     /*---DELETE---*/
     //question.delete(4);
-    question.delete(2);
-    console.log(question);
+    //    question.delete(2);
+    //    console.log(question);
 
     /*---HAS---*/
     if (question.has(4)) {
-        console.log('Answer 4 is here');
+        //        console.log('Answer 4 is here');
     }
 
     /*---CLEAR---*/
-    question.clear();
-    console.log(question);
+    //    question.clear();
+    //    console.log(question);
+
+    /*---LOOPING---*/
+    //    question.forEach((key, value) => console.log(`This is ${key}, and it's set to ${value}`));
+
+    for (let [key, value] of question.entries()) {
+        if (typeof (key) === 'number') {
+            console.log(`Answer ${key}: ${value}`);
+        }
+    }
+    const ans = parseInt(prompt('Write the correct answer'));
+    console.log(question.get(ans === question.get('correct')));
 
 };
 maps();
