@@ -1,3 +1,68 @@
+/////////////////////////////////////////////////////////
+/*--------------------> VARIABLES <--------------------*/
+/////////////////////////////////////////////////////////
+
+const variables = function () {
+
+    //ES5
+    var name5 = "Jane Smith";
+    var age5 = "23";
+    name5 = "Jane Miller";
+    console.log(name5);
+
+    //ES6
+    const name6 = "Jane Smith";
+    let age6 = "23";
+    //    name6 = "Jane Miller";
+    //    console.log(name6);
+
+    /*
+    --VAR -> function-scoped
+    --LET, CONST -> block-scoped
+
+        EXAMPLE:
+    */
+    function driversLicence(passedTest) {
+        if (passedTest) {
+            var firstName = "John";
+            var yearOfBirth = 1990;
+        }
+        console.log(firstName + ', born in ' + yearOfBirth + ' is now oficially allowed to drive a car.');
+    }
+    driversLicence(true); //-> Działa, ponieważ zmienne obejmują całą funkcję driversLicence
+
+    //    function driversLicence6(passedTest) {
+    //        if (passedTest) {
+    //            let firstName = "John";
+    //            const yearOfBirth = 1990;
+    //        }
+    //        console.log(firstName + ', born in ' + yearOfBirth + ' is now oficially allowed to drive a car.');
+    //    }
+    //    driversLicence6(true); //-> Wyrzuci błąd, ponieważ zmienne obejmują tylko w bloku if
+
+    function driversLicence6(passedTest) {
+        let firstName;
+        const yearOfBirth = 1990;
+
+        if (passedTest) {
+            firstName = "John";
+        }
+        console.log(firstName + ', born in ' + yearOfBirth + ' is now oficially allowed to drive a car.');
+    }
+    driversLicence6(true); //-> Działa, ponieważ zmienne zadeklarowane bezpośrednio w bloku funkcji
+
+};
+variables();
+
+// CONST, LET nie mogą być używane przed zadeklarowaniem, pojawi się błąd i informacja, że zmienna 'is not defined'. W przypadku VAR pojawi się 'undefined', co znaczy, że istnieje, ale nie została zdefiniowana.
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////
 /*--------------------> ARROW FUNCTIONS <--------------------*/
 ///////////////////////////////////////////////////////////////
@@ -415,7 +480,7 @@ function classes() {
             console.log('Hey there!');
         }
     }
-    var adam = new Person5('Adam', 1993, 'Designer');
+    var adam = new Person5('Adam', 1963, 'Designer');
     console.log(adam);
 
     Person6.greeting();
