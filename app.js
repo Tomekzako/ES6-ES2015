@@ -244,9 +244,9 @@ function spreadOperators() {
 
 
 
-////////////////////////////////////////////////////////////////
-/*--------------------> SPREAD OPERATORS <--------------------*/
-////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+/*--------------------> REST PARAMETERS <--------------------*/
+///////////////////////////////////////////////////////////////
 
 function restParameters() {
 
@@ -268,3 +268,43 @@ function restParameters() {
 restParameters();
 
 /* Największą różnicą między spread operator, a rest parameters jest miejsce w którym ich używamy. Spread jest używany w function call, natomiast rest w deklaracji. */
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+/*--------------------> DEFAULT PARAMETERS <--------------------*/
+//////////////////////////////////////////////////////////////////
+
+function defaultParameters() {
+
+    //ES5
+    function SmithPerson(firstName, yearOfBirth, lastName, nationality) {
+
+        lastName === undefined ? lastName = "Smith" : lastName = lastName;
+        nationality === undefined ? nationality = "American" : nationality = nationality;
+        this.firstName = firstName;
+        this.yearOfBirth = yearOfBirth;
+        this.lastName = lastName;
+        this.nationality = nationality;
+    };
+
+    var john = new SmithPerson("John", "1991");
+    //    console.log(john);
+
+    //ES6
+
+    function SmithPerson2(firstName, yearOfBirth, lastName = 'Smith', nationality = 'American') {
+        this.firstName = firstName;
+        this.yearOfBirth = yearOfBirth;
+        this.lastName = lastName;
+        this.nationality = nationality;
+    }
+
+    var john = new SmithPerson2("John", "1976");
+    var tom = new SmithPerson2("Tom", "1993", "Chyc", "Polish");
+    console.log(john);
+    console.log(tom);
+};
+defaultParameters();
