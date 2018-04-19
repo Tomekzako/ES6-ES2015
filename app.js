@@ -358,6 +358,14 @@ function maps() {
     /*---LOOPING---*/
     //    question.forEach((key, value) => console.log(`This is ${key}, and it's set to ${value}`));
 
+    //    for ( let key of question.keys()){
+    //        console.log(key);
+    //    }
+    //    
+    //        for ( let val of question.values()){
+    //        console.log(val);
+    //    }
+
     for (let [key, value] of question.entries()) {
         if (typeof (key) === 'number') {
             console.log(`Answer ${key}: ${value}`);
@@ -367,4 +375,54 @@ function maps() {
     console.log(question.get(ans === question.get('correct')));
 
 };
-maps();
+//maps();
+
+
+
+
+///////////////////////////////////////////////////////
+/*--------------------> CLASSES <--------------------*/
+///////////////////////////////////////////////////////
+
+function classes() {
+
+    //ES5
+    var Person5 = function (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfbirth = yearOfBirth;
+        this.job = job;
+    }
+
+    Person5.prototype.calculatedAge = function () {
+        var age = new Date().getFullYear() - this.yearOfbirth;
+        console.log(age);
+    }
+    var tom = new Person5('Tom', 1993, 'Teacher');
+    console.log(tom);
+
+    //ES6
+    class Person6 {
+        constructor(name, yearOfBirth, job) {
+            this.name = name;
+            this.yearOfbirth = yearOfBirth;
+            this.job = job;
+        }
+        calculatedAge() {
+            const age = new Date().getFullYear() - this.yearOfbirth;
+            console.log(age);
+        }
+        static greeting() {
+            console.log('Hey there!');
+        }
+    }
+    var adam = new Person5('Adam', 1993, 'Designer');
+    console.log(adam);
+
+    Person6.greeting();
+};
+classes();
+
+/*
+1.Klasy w odróżnieniu do Konstruktorów nie mają właściwości hoisting, dlatego jeżeli chcemy z nich      korzystać, musimy je zadeklarować na początku.
+2. Możemy dodawać tylko metody do klasy, ale nie właściwości.
+*/
