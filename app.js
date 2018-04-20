@@ -52,7 +52,7 @@ const variables = function () {
     driversLicence6(true); //-> Działa, ponieważ zmienne zadeklarowane bezpośrednio w bloku funkcji
 
 };
-variables();
+//variables();
 
 // CONST, LET nie mogą być używane przed zadeklarowaniem, pojawi się błąd i informacja, że zmienna 'is not defined'. W przypadku VAR pojawi się 'undefined', co znaczy, że istnieje, ale nie została zdefiniowana.
 
@@ -486,7 +486,7 @@ function classes() {
 
     Person6.greeting();
 };
-classes();
+//classes();
 
 /*
 1.Klasy w odróżnieniu do Konstruktorów nie mają właściwości hoisting, dlatego jeżeli chcemy z nich      korzystać, musimy je zadeklarować na początku.
@@ -565,4 +565,75 @@ function subclasses() {
     johnAthlete6.calculatedAge();
 
 };
-subclasses();
+//subclasses();
+
+
+
+
+
+////////////////////////////////////////////////////////
+/*--------------------> PRACTICE <--------------------*/
+////////////////////////////////////////////////////////
+
+const practice = function () {
+
+    class Element {
+        constructor(name, buildYear) {
+            this.name = name;
+            this.buildYear = buildYear;
+        }
+    }
+
+    class Park extends Element {
+        constructor(name, buildYear, area, numTrees) {
+            super(name, buildYear);
+            this.area = area;
+            this.numTrees = numTrees;
+        }
+
+        treeDensity() {
+            const density = this.numTrees / this.area;
+            console.log(`${this.name} has a tree density of ${density} trees per square km.`);
+        }
+    }
+
+    class Street extends Element {
+        constructor(name, buildYear, length, size = 3) {
+            super(name, buildYear);
+            this.length = length;
+            this.size = size;
+        }
+
+        classifyStreet() {
+            const classification = new Map();
+            classification.set(1, "tiny");
+            classification.set(2, "small");
+            classification.set(3, "normal");
+            classification.set(4, "big");
+            classification.set(5, "huge");
+            console.log(`${this.name}, built in ${this.buildYear}, is a ${classification.get(this.size)}.`);
+        }
+    }
+
+    const allParks = [new Park('Green Park', 1987, 0.2, 215),
+                      new Park('Central Park', 1942, 1.1, 921),
+                      new Park('Side Park', 1891, 2.6, 3541)];
+
+    const allStreets = [new Street('Tatary Street', 1999, 1.1, 4),
+                      new Street('Kosciuszki Street', 1987, 2.7, 2),
+                      new Street('Ocean Street', 2009, 1.1, 0.7),
+                      new Street('Slomiana Street', 1978, 2.5, 5)];
+
+
+    function reportParks(p){
+        console.log('-------PARK REPORT-------');
+        p.forEach(el => el.treeDensity());
+        
+    };
+    function reportStreets(s){};
+    
+    reportParks(allParks);
+    reportStreets(allStreets);
+
+};
+practice();
