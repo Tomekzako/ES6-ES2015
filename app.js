@@ -445,6 +445,7 @@ function maps() {
 
 
 
+
 ///////////////////////////////////////////////////////
 /*--------------------> CLASSES <--------------------*/
 ///////////////////////////////////////////////////////
@@ -491,3 +492,77 @@ classes();
 1.Klasy w odróżnieniu do Konstruktorów nie mają właściwości hoisting, dlatego jeżeli chcemy z nich      korzystać, musimy je zadeklarować na początku.
 2. Możemy dodawać tylko metody do klasy, ale nie właściwości.
 */
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+/*--------------------> CLASSES WITH SUBCLASSES <--------------------*/
+///////////////////////////////////////////////////////////////////////
+
+function subclasses() {
+
+    //ES5
+    var Person5 = function (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfbirth = yearOfBirth;
+        this.job = job;
+    }
+
+    Person5.prototype.calculatedAge = function () {
+        var age = new Date().getFullYear() - this.yearOfbirth;
+        console.log(age);
+    }
+
+    var Athlete5 = function (name, yearOfBirth, job, olympicGames, medals) {
+        Person5.call(this, name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    };
+
+    Athlete5.prototype = Object.create(Person5.prototype); /// Athlete5 - subclass, Person5 - superclass
+
+    Athlete5.prototype.wonMedal = function () {
+        this.medals++;
+        console.log(this.medals);
+    };
+
+    var johnAthlete5 = new Athlete5('John', 1990, 'swimmer', 3, 10);
+    console.log(johnAthlete5);
+
+    johnAthlete5.calculatedAge();
+    johnAthlete5.wonMedal();
+
+
+    //ES6
+    class Person6 {
+        constructor(name, yearOfBirth, job) {
+            this.name = name;
+            this.yearOfbirth = yearOfBirth;
+            this.job = job;
+        }
+        calculatedAge() {
+            const age = new Date().getFullYear() - this.yearOfbirth;
+            console.log(age);
+        }
+    }
+
+    class Athlete6 extends Person6 {
+        constructor(name, yearOfBirth, job, olympicGames, medals) {
+            super(name, yearOfBirth, job);
+            this.olympicGames = olympicGames;
+            this.medals = medals;
+        }
+        wonMedals() {
+            this.medals++;
+            console.log(this.medals);
+        }
+    }
+    var johnAthlete6 = new Athlete6('John', 1990, 'swimmer', 3, 10);
+    console.log(johnAthlete6);
+    johnAthlete6.wonMedals();
+    johnAthlete6.calculatedAge();
+
+};
+subclasses();
