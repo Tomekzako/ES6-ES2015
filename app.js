@@ -643,6 +643,9 @@ const practice = function () {
         const [totalAge, avgAge] = calc(age);
         console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
 
+        //Which park has more than 1000 trees
+        const trees = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+        console.log(`${p[trees].name} has more than 1000 trees.`)
 
     };
 
