@@ -611,7 +611,7 @@ const practice = function () {
             classification.set(3, "normal");
             classification.set(4, "big");
             classification.set(5, "huge");
-            console.log(`${this.name}, built in ${this.buildYear}, is a ${classification.get(this.size)}.`);
+            console.log(`${this.name}, built in ${this.buildYear}, is a ${classification.get(this.size)} street.`);
         }
     }
 
@@ -629,7 +629,7 @@ const practice = function () {
 
     const allStreets = [new Street('Tatary Street', 1999, 1.1, 4),
                       new Street('Kosciuszki Street', 1987, 2.7, 2),
-                      new Street('Ocean Street', 2009, 1.1, 0.7),
+                      new Street('Ocean Street', 2009, 1.1),
                       new Street('Slomiana Street', 1978, 2.5, 5)];
 
 
@@ -649,7 +649,17 @@ const practice = function () {
 
     };
 
-    function reportStreets(s) {};
+    function reportStreets(s) {
+        console.log('-------STREET REPORT-------');
+
+        //Total and average length of the town's streets
+        const strLength = s.map(el => el.length);
+        const [totalLength, avgLength] = calc(strLength);
+        console.log(`Our ${s.length} streets has a total length of ${totalLength} km, with an average of ${avgLength} km.`)
+
+        //Classify sizes
+        s.forEach(el => el.classifyStreet());
+    };
 
     reportParks(allParks);
     reportStreets(allStreets);
