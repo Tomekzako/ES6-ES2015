@@ -615,6 +615,14 @@ const practice = function () {
         }
     }
 
+    function calc(array) {
+
+        const sum = array.reduce((prev, cur, index) => prev + cur, 0);
+
+        return [sum, sum / array.length];
+
+    }
+
     const allParks = [new Park('Green Park', 1987, 0.2, 215),
                       new Park('Central Park', 1942, 1.1, 921),
                       new Park('Side Park', 1891, 2.6, 3541)];
@@ -625,13 +633,21 @@ const practice = function () {
                       new Street('Slomiana Street', 1978, 2.5, 5)];
 
 
-    function reportParks(p){
+    function reportParks(p) {
         console.log('-------PARK REPORT-------');
+        //Density
         p.forEach(el => el.treeDensity());
-        
+
+        //Average age
+        const age = p.map(el => new Date().getFullYear() - el.buildYear);
+        const [totalAge, avgAge] = calc(age);
+        console.log(`Our ${p.length} parks have an average of ${avgAge} years.`);
+
+
     };
-    function reportStreets(s){};
-    
+
+    function reportStreets(s) {};
+
     reportParks(allParks);
     reportStreets(allStreets);
 
