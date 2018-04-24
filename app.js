@@ -82,7 +82,7 @@ function blocks() {
     }
 
 };
-blocks();
+//blocks();
 
 
 
