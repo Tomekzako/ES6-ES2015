@@ -265,8 +265,15 @@ const destructuring = function () {
     const [age1, retirement] = calcAgeRetirement(1990);
     console.log(age1, retirement);
 
+    // EXAMPLE
+
+    const numbers = [1, 2, 3];
+    [num1, ,num3] = numbers;
+    console.log(num1, num3);
+
+
 };
-//destructuring();
+destructuring();
 
 
 
@@ -372,7 +379,7 @@ function spreadOperators() {
 
     const newPerson = {
         ...person,
-        age: 25
+        age: new Date().getFullYear() - 1993
     };
     console.log(newPerson);
 
@@ -403,7 +410,7 @@ function restParameters() {
     };
     fullAge6(18, 1990, 2010, 1967, 2016, 1933);
 };
-//restParameters();
+restParameters();
 
 /* Największą różnicą między spread operator, a rest parameters jest miejsce w którym ich używamy. Spread jest używany w function call, natomiast rest w deklaracji. */
 
