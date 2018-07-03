@@ -365,8 +365,19 @@ function spreadOperators() {
 
     all.forEach(cur => cur.style.color = "purple");
 
+    // EXAMPLE
+    const person = {
+        name: 'Tom'
+    };
+
+    const newPerson = {
+        ...person,
+        age: 25
+    };
+    console.log(newPerson);
+
 };
-//spreadOperators();
+spreadOperators();
 
 
 
@@ -543,7 +554,7 @@ function classes() {
             console.log('Hey there!');
         }
     }
-    var adam = new Person5('Adam', 1963, 'Designer');
+    var adam = new Person6('Adam', 1963, 'Designer');
     console.log(adam);
 
     Person6.greeting();
@@ -727,4 +738,4 @@ const practice = function () {
     reportStreets(allStreets);
 
 };
-practice();
+// practice();
